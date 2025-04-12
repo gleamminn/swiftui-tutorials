@@ -19,4 +19,5 @@ struct ContentView: View {
 //미리보기:해당 뷰에 대한 미리보기를 만듬
 #Preview {
     ContentView()
+        .environment(ModelData())
 }
