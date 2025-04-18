@@ -11,6 +11,19 @@ import Foundation
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
+    
+    var features: [Landmark] {
+        landmarks.filter{ $0.isFeatured }
+    }
+    
+    //문자열(String)을 키로, Landmark 배열을 값으로 갖는 딕셔너리
+    var categories: [String: [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+            //.category에 따라 그룹핑
+        )
+    }
 }
 
 

@@ -11,8 +11,27 @@ import SwiftUI
 
 // 구조: View프로토콜을 따르고 뷰의 콘텐츠와 레이아웃을 설명
 struct ContentView: View {
+    @State private var selection: Tab = .featured
+    
+    enum Tab {
+        case featured
+        case list
+    }
     var body: some View {
-        LandmarkList()
+        TabView(selection: $selection) {
+            CategoryHome()
+                .tabItem({
+                    Label("Featured", systemImage: "star")
+                })
+                .tag(Tab.featured)
+            
+            LandmarkList()
+                .tabItem({
+                    Label("Featured", systemImage: "list.bullet")
+                })
+                .tag(Tab.list)
+        }
+        
     }
 }
 
