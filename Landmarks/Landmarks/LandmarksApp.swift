@@ -18,6 +18,12 @@ struct LandmarksApp: App {
             ContentView()
                 .environment(modelData)
         }
+        
+        #if os(watchOS)
+        WKNotificationScene(controller: NotificationController.self, category: "LandmarkNear")
+        #endif
     }
     //body 프로퍼티 : 디스플레이를 위한 콘텐츠를 제공하는 하나 이상의 scene 리턴
+    
+    
 }
